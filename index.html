@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌸 Quiz 20/10 - Trò chơi dành cho phái nữ 🌸</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Welcome Screen -->
+        <div id="welcome-screen" class="screen active">
+            <div class="welcome-content">
+                <div class="welcome-icon">
+                    <i class="fas fa-heart"></i>
+                </div>
+                <h1>🌸 Chúc mừng ngày 20/10 🌸</h1>
+                <p class="welcome-subtitle">Trò chơi quiz dành riêng cho các bạn nữ xinh đẹp!</p>
+                <div class="game-info">
+                    <div class="info-item">
+                        <i class="fas fa-users"></i>
+                        <span>9 bạn nữ xinh đẹp</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-question-circle"></i>
+                        <span>10 câu hỏi thú vị</span>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-clock"></i>
+                        <span>2 phút mỗi câu (5s lý tưởng)</span>
+                    </div>
+                </div>
+                <div class="welcome-actions">
+                    <button id="start-btn" class="btn-primary">
+                        <i class="fas fa-play"></i>
+                        Bắt đầu chơi
+                    </button>
+                    <button id="view-leaderboard-btn" class="btn-secondary">
+                        <i class="fas fa-trophy"></i>
+                        Bảng xếp hạng
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Character Selection Screen -->
+        <div id="character-screen" class="screen">
+            <div class="character-content">
+                <h2>🌸 Chọn nhân vật của bạn 🌸</h2>
+                <div class="characters-grid">
+                    <div class="character-card" data-character="0">
+                        <div class="character-avatar">👩‍💼</div>
+                        <h3>Kei</h3>
+                        <p>Boss</p>
+                    </div>
+                    <div class="character-card" data-character="1">
+                        <div class="character-avatar">👩‍💻</div>
+                        <h3>Emma</h3>
+                        <p>Lập trình viên</p>
+                    </div>
+                    <div class="character-card" data-character="2">
+                        <div class="character-avatar">👩‍🎨</div>
+                        <h3>Mia</h3>
+                        <p>Quản lý nhân sự</p>
+                    </div>
+                    <div class="character-card" data-character="3">
+                        <div class="character-avatar">👩‍⚕️</div>
+                        <h3>Jane</h3>
+                        <p>Personal Assistant (PA)</p>
+                    </div>
+                    <div class="character-card" data-character="4">
+                        <div class="character-avatar">👩‍🚀</div>
+                        <h3>Annie</h3>
+                        <p>Quality Assurance (QA)</p>
+                    </div>
+                    <div class="character-card" data-character="5">
+                        <div class="character-avatar">👩‍🍳</div>
+                        <h3>Flora</h3>
+                        <p>Quality Assurance (QA)</p>
+                    </div>
+
+                    <div class="character-card" data-character="6">
+                        <div class="character-avatar">👩‍🏫</div>
+                        <h3>Mary</h3>
+                        <p>Kế toán</p>
+                    </div>
+                    <div class="character-card" data-character="7">
+                        <div class="character-avatar">👩‍✈️</div>
+                        <h3>Jasmine</h3>
+                        <p>Business Analyst (BA)</p>
+                    </div>
+                    <div class="character-card" data-character="8">
+                        <div class="character-avatar">👩‍🎤</div>
+                        <h3>Lena</h3>
+                        <p>Marketing</p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- Game Screen -->
+        <div id="game-screen" class="screen">
+            <div class="game-header">
+                <div class="character-info">
+                    <div class="character-avatar" id="current-character-avatar">👩‍💼</div>
+                    <div class="character-details">
+                        <h3 id="current-character-name">Kei</h3>
+                        <p id="current-character-role">Boss</p>
+                    </div>
+                </div>
+                <div class="game-stats">
+                    <div class="stat">
+                        <i class="fas fa-clock"></i>
+                        <span id="timer">5</span>s
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-check-circle"></i>
+                        <span id="correct-count">0</span>/10
+                    </div>
+                    <div class="stat">
+                        <i class="fas fa-question-circle"></i>
+                        <span id="question-number">1</span>/10
+                    </div>
+                </div>
+            </div>
+
+            <div class="game-content">
+                <div class="question-container">
+                    <h2 id="question-text">Câu hỏi sẽ hiển thị ở đây</h2>
+                    <div class="options-container" id="options-container">
+                        <!-- Options will be generated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill"></div>
+            </div>
+        </div>
+
+        <!-- Results Screen -->
+        <div id="results-screen" class="screen">
+            <div class="results-content">
+                <div class="results-header">
+                    <div class="celebration-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2>🎉 Kết quả của bạn 🎉</h2>
+                </div>
+                
+                <div class="results-stats">
+                    <div class="result-item">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Số câu đúng: <strong id="final-correct">0</strong>/10</span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-clock"></i>
+                        <span>Thời gian: <strong id="final-time">0</strong>s</span>
+                    </div>
+                    <div class="result-item">
+                        <i class="fas fa-star"></i>
+                        <span>Điểm số: <strong id="final-score">0</strong></span>
+                    </div>
+                </div>
+
+                <div class="results-actions">
+                    <button id="leaderboard-btn" class="btn-primary">
+                        <i class="fas fa-trophy"></i>
+                        Bảng xếp hạng
+                    </button>
+                    <button id="back-to-home-btn" class="btn-secondary">
+                        <i class="fas fa-home"></i>
+                        Về trang chủ
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Leaderboard Screen -->
+        <div id="leaderboard-screen" class="screen">
+            <div class="leaderboard-content">
+                <h2>🏆 Bảng xếp hạng 🏆</h2>
+                <div class="leaderboard-tabs">
+                    <button class="tab-btn active" data-tab="time">Bảng xếp hạng chung</button>
+                    <button class="tab-btn" data-tab="accuracy">Số câu sai nhiều nhất</button>
+                </div>
+                
+                <div class="leaderboard-list" id="leaderboard-list">
+                    <!-- Leaderboard items will be generated by JavaScript -->
+                </div>
+
+                <div class="leaderboard-actions">
+                    <button id="back-to-game-btn" class="btn-primary">
+                        <i class="fas fa-home"></i>
+                        Về trang chủ
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

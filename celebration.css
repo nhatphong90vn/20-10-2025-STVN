@@ -1,0 +1,490 @@
+/* Celebration Card Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fecfef 100%);
+    min-height: 100vh;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.celebration-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Floating Hearts Animation */
+.floating-hearts {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    font-size: 2rem;
+    animation: float 6s ease-in-out infinite;
+    opacity: 0.7;
+}
+
+.heart:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    animation-duration: 6s;
+}
+
+.heart:nth-child(2) {
+    left: 20%;
+    animation-delay: 1s;
+    animation-duration: 7s;
+}
+
+.heart:nth-child(3) {
+    left: 30%;
+    animation-delay: 2s;
+    animation-duration: 8s;
+}
+
+.heart:nth-child(4) {
+    left: 40%;
+    animation-delay: 3s;
+    animation-duration: 6s;
+}
+
+.heart:nth-child(5) {
+    left: 50%;
+    animation-delay: 4s;
+    animation-duration: 7s;
+}
+
+.heart:nth-child(6) {
+    left: 60%;
+    animation-delay: 5s;
+    animation-duration: 8s;
+}
+
+.heart:nth-child(7) {
+    left: 70%;
+    animation-delay: 1.5s;
+    animation-duration: 6s;
+}
+
+.heart:nth-child(8) {
+    left: 80%;
+    animation-delay: 2.5s;
+    animation-duration: 7s;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 0.7;
+    }
+    90% {
+        opacity: 0.7;
+    }
+    100% {
+        transform: translateY(-100px) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Main Celebration Card */
+.celebration-card {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(20px);
+    border: 3px solid rgba(255, 107, 157, 0.3);
+    max-width: 800px;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    animation: cardAppear 1s ease-out;
+}
+
+@keyframes cardAppear {
+    0% {
+        opacity: 0;
+        transform: scale(0.8) translateY(50px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Card Header */
+.card-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.celebration-icon {
+    font-size: 4rem;
+    color: #ff6b9d;
+    margin-bottom: 20px;
+    animation: heartbeat 2s infinite;
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+}
+
+.card-header h1 {
+    color: #333;
+    font-size: 2.5rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Character Section */
+.character-section {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background: linear-gradient(135deg, rgba(255, 107, 157, 0.1), rgba(255, 143, 171, 0.1));
+    border-radius: 20px;
+    border: 2px solid rgba(255, 107, 157, 0.2);
+}
+
+.character-image {
+    position: relative;
+    flex-shrink: 0;
+}
+
+.character-photo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid #ff6b9d;
+    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
+    animation: photoGlow 3s ease-in-out infinite;
+}
+
+@keyframes photoGlow {
+    0%, 100% { box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3); }
+    50% { box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5); }
+}
+
+.image-frame {
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    border: 3px solid #ff8fab;
+    border-radius: 50%;
+    animation: frameRotate 10s linear infinite;
+}
+
+@keyframes frameRotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.character-info {
+    flex: 1;
+}
+
+.character-info h2 {
+    font-size: 2.2rem;
+    color: #333;
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+.character-role {
+    font-size: 1.3rem;
+    color: #666;
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.achievement-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: linear-gradient(135deg, #ffd700, #ffed4e);
+    color: #333;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 600;
+    box-shadow: 0 5px 15px rgba(255, 215, 0, 0.3);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+@keyframes badgePulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Celebration Message */
+.celebration-message {
+    margin-bottom: 30px;
+}
+
+.message-box {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(248, 249, 250, 0.9));
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 107, 157, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.message-box h3 {
+    color: #ff6b9d;
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.celebration-text {
+    color: #333;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    text-align: center;
+    font-weight: 400;
+}
+
+/* Celebration Actions */
+.celebration-actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.btn-celebration, .btn-share, .btn-back {
+    padding: 15px 25px;
+    border: none;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+}
+
+.btn-celebration {
+    background: linear-gradient(135deg, #ff6b9d, #ff8fab);
+    color: white;
+    box-shadow: 0 10px 20px rgba(255, 107, 157, 0.3);
+}
+
+.btn-celebration:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(255, 107, 157, 0.4);
+}
+
+.btn-share {
+    background: linear-gradient(135deg, #4CAF50, #66BB6A);
+    color: white;
+    box-shadow: 0 10px 20px rgba(76, 175, 80, 0.3);
+}
+
+.btn-share:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(76, 175, 80, 0.4);
+}
+
+.btn-back {
+    background: linear-gradient(135deg, #a8edea, #fed6e3);
+    color: #333;
+    box-shadow: 0 10px 20px rgba(168, 237, 234, 0.3);
+}
+
+.btn-back:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 30px rgba(168, 237, 234, 0.4);
+}
+
+/* Celebration Footer */
+.celebration-footer {
+    text-align: center;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.celebration-footer p {
+    margin-bottom: 5px;
+}
+
+/* Confetti Animation */
+.confetti-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 5;
+}
+
+.confetti {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff6b9d;
+    animation: confettiFall 3s linear infinite;
+}
+
+.confetti:nth-child(1) {
+    left: 10%;
+    animation-delay: 0s;
+    background: #ff6b9d;
+}
+
+.confetti:nth-child(2) {
+    left: 20%;
+    animation-delay: 0.5s;
+    background: #ff8fab;
+}
+
+.confetti:nth-child(3) {
+    left: 30%;
+    animation-delay: 1s;
+    background: #ffd700;
+}
+
+.confetti:nth-child(4) {
+    left: 40%;
+    animation-delay: 1.5s;
+    background: #4CAF50;
+}
+
+.confetti:nth-child(5) {
+    left: 50%;
+    animation-delay: 2s;
+    background: #2196F3;
+}
+
+.confetti:nth-child(6) {
+    left: 60%;
+    animation-delay: 2.5s;
+    background: #9C27B0;
+}
+
+.confetti:nth-child(7) {
+    left: 70%;
+    animation-delay: 0.3s;
+    background: #FF9800;
+}
+
+.confetti:nth-child(8) {
+    left: 80%;
+    animation-delay: 0.8s;
+    background: #E91E63;
+}
+
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100vh) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(720deg);
+        opacity: 0;
+    }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .celebration-container {
+        padding: 10px;
+    }
+    
+    .celebration-card {
+        padding: 20px;
+    }
+    
+    .card-header h1 {
+        font-size: 2rem;
+    }
+    
+    .character-section {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .character-photo {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .character-info h2 {
+        font-size: 1.8rem;
+    }
+    
+    .character-role {
+        font-size: 1.1rem;
+    }
+    
+    .celebration-actions {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .btn-celebration, .btn-share, .btn-back {
+        width: 100%;
+        max-width: 300px;
+        justify-content: center;
+    }
+    
+    .message-box {
+        padding: 20px;
+    }
+    
+    .celebration-text {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card-header h1 {
+        font-size: 1.5rem;
+    }
+    
+    .character-photo {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .character-info h2 {
+        font-size: 1.5rem;
+    }
+    
+    .celebration-text {
+        font-size: 0.9rem;
+    }
+}

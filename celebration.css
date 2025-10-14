@@ -174,38 +174,112 @@ body {
 .character-image {
     position: relative;
     flex-shrink: 0;
+    width: 220px; /* base width */
+    aspect-ratio: 9/16; /* portrait 9:16 */
+    border-radius: 16px;
+    overflow: hidden;
+    background: linear-gradient(180deg, #0b1220, #08101a);
+    box-shadow: 0 10px 35px rgba(2, 6, 23, 0.25);
 }
 
 .character-photo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border: 5px solid #ff6b9d;
-    box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3);
-    animation: photoGlow 3s ease-in-out infinite;
+    border-radius: 16px;
+    transform: scale(1.02);
+    transition: transform 0.6s ease;
 }
 
 @keyframes photoGlow {
-    0%, 100% { box-shadow: 0 10px 30px rgba(255, 107, 157, 0.3); }
-    50% { box-shadow: 0 15px 40px rgba(255, 107, 157, 0.5); }
+    0%, 100% { filter: saturate(105%); }
+    50% { filter: saturate(115%); }
 }
 
 .image-frame {
+    pointer-events: none;
     position: absolute;
-    top: -10px;
-    left: -10px;
-    right: -10px;
-    bottom: -10px;
-    border: 3px solid #ff8fab;
-    border-radius: 50%;
-    animation: frameRotate 10s linear infinite;
+    inset: 0;
+    border-radius: 16px;
+    padding: 2px; /* border thickness */
+    background: conic-gradient(from 90deg, #ff6bcb, #7c6bff, #ffd27a, #ff6bcb);
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    filter: blur(6px) saturate(130%);
+    opacity: 0.9;
 }
 
 @keyframes frameRotate {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/* hover effect for subtle depth */
+.character-image { transition: transform 0.45s cubic-bezier(.2,.9,.2,1), box-shadow .6s ease; animation: glowPulse 4.5s ease-in-out infinite; }
+.character-image:hover { transform: translateY(-4px); }
+.character-image:hover .character-photo { transform: scale(1.07); }
+
+/* floating hearts near the frame (no HTML changes) */
+.character-image::before,
+.character-image::after {
+    content: '❤';
+    position: absolute;
+    color: rgba(255, 105, 180, 0.9);
+    font-size: 18px;
+    filter: drop-shadow(0 2px 6px rgba(255, 105, 180, 0.35));
+    pointer-events: none;
+    opacity: 0;
+}
+.character-image::before {
+    left: 8%; bottom: -16px; animation: floatHeart 5.5s linear infinite;
+}
+.character-image::after {
+    left: 78%; bottom: -12px; animation: floatHeart 6.8s linear infinite 0.9s; font-size: 15px;
+}
+
+/* additional hearts from the photo layer for higher density */
+.character-photo::before,
+.character-photo::after {
+    content: '❤';
+    position: absolute;
+    color: rgba(255, 105, 180, 0.92);
+    font-size: 16px;
+    filter: drop-shadow(0 2px 6px rgba(255, 105, 180, 0.35));
+    pointer-events: none;
+    opacity: 0;
+}
+.character-photo::before {
+    left: 28%; bottom: -18px; animation: floatHeart 6.2s linear infinite 0.3s;
+}
+.character-photo::after {
+    left: 58%; bottom: -20px; animation: floatHeart 5.8s linear infinite 1.6s; font-size: 20px;
+}
+
+@keyframes floatHeart {
+    0% { transform: translateY(0) scale(0.8); opacity: 0; }
+    15% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { transform: translateY(-180px) scale(1.05); opacity: 0; }
+}
+
+@keyframes glowPulse {
+    0%, 100% { box-shadow: 0 10px 35px rgba(2, 6, 23, 0.25); }
+    50% { box-shadow: 0 14px 48px rgba(2, 6, 23, 0.32); }
+}
+
+/* Hearts inside the 9:16 frame (HTML layer .hearts-inside) */
+.hearts-inside { position:absolute; inset:0; pointer-events:none; }
+.hearts-inside .hi { position:absolute; opacity:.95; color: rgba(255,105,180,.95); text-shadow: 0 2px 8px rgba(255,105,180,.35); }
+.hearts-inside .hi1 { left: 10%; bottom: -24px; font-size: 16px; animation: floatHeart 6s linear infinite; }
+.hearts-inside .hi2 { left: 32%; bottom: -28px; font-size: 14px; animation: floatHeart 6.8s linear infinite .6s; }
+.hearts-inside .hi3 { left: 56%; bottom: -22px; font-size: 18px; animation: floatHeart 5.8s linear infinite 1.2s; }
+.hearts-inside .hi4 { left: 74%; bottom: -26px; font-size: 15px; animation: floatHeart 7s linear infinite 1.8s; }
+.hearts-inside .hi5 { left: 22%; bottom: -20px; font-size: 12px; animation: floatHeart 6.2s linear infinite 2.4s; }
+.hearts-inside .hi6 { left: 86%; bottom: -24px; font-size: 20px; animation: floatHeart 5.6s linear infinite 3.1s; }
 
 .character-info {
     flex: 1;
@@ -437,10 +511,7 @@ body {
         gap: 20px;
     }
     
-    .character-photo {
-        width: 120px;
-        height: 120px;
-    }
+    .character-image { width: 180px; }
     
     .character-info h2 {
         font-size: 1.8rem;
@@ -475,10 +546,7 @@ body {
         font-size: 1.5rem;
     }
     
-    .character-photo {
-        width: 100px;
-        height: 100px;
-    }
+    .character-image { width: 150px; }
     
     .character-info h2 {
         font-size: 1.5rem;

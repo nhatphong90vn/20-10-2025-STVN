@@ -77,6 +77,10 @@
         </div>
 
         <div class="celebration-actions">
+          <button class="btn-music" onclick="playCelebrationSound()">
+            <i class="fas fa-music"></i>
+            Nghe nhạc
+          </button>
           <button class="btn-share" onclick="shareCelebration()">
             <i class="fas fa-share"></i>
             Chia sẻ thiệp
@@ -101,7 +105,7 @@
       </div>
     </div>
 
-    <audio loop autoplay>
+    <audio id="celebrationMusic" loop>
       <source src="assets/music/annie.mp3" type="audio/mpeg" />
     </audio>
 

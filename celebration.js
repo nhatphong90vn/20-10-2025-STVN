@@ -33,6 +33,8 @@ function startCelebrationEffects() {
     createSparkleEffects();
 }
 
+
+
 function createFloatingHearts() {
     const heartsContainer = document.querySelector('.floating-hearts');
     const heartEmojis = ['💖', '🌸', '💕', '🌺', '💗', '🌷', '✨', '🎀'];
@@ -133,11 +135,11 @@ function playCelebrationSound() {
         }).catch(error => {
             console.log('Could not play audio:', error);
             // Fallback: show a message
-            showNotification('🎵 Nhạc chúc mừng đang phát! (Cần tương tác với trang để phát nhạc)', 'success');
+            showNotification('🎵 Cảm ơn bạn đã nghe nhạc ! - Chúc bạn có một ngày lễ thật vui vẻ và hạnh phúc.', 'success');
         });
     } else {
         // Fallback notification
-        showNotification('🎵 Nhạc chúc mừng đang phát!', 'success');
+        showNotification('🎵 Cảm ơn bạn đã nghe nhạc !', 'success');
     }
 }
 

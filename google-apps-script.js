@@ -30,7 +30,7 @@ function doPost(e) {
     
     if (data.action === 'getLeaderboard') {
       // Mở Google Sheets
-      const sheet = SpreadsheetApp.openById('YOUR_SHEET_ID').getActiveSheet();
+      const sheet = SpreadsheetApp.openById('1Tp3CwP24lYqfLwKqEqbrpk1g9lqDMmjOiKC9G1v2pK4').getActiveSheet();
       const data = sheet.getDataRange().getValues();
       
       // Bỏ qua header row

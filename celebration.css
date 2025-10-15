@@ -470,6 +470,36 @@ body {
   text-decoration: none;
 }
 
+/* Play Music button */
+.btn-music {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  background: linear-gradient(135deg, #7c6bff, #ff6bcb);
+  box-shadow: 0 10px 20px rgba(124, 107, 255, 0.28);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, filter 0.25s ease;
+}
+
+.btn-music i { animation: notePulse 1.2s ease-in-out infinite; }
+
+.btn-music:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 30px rgba(124, 107, 255, 0.35);
+  filter: saturate(115%);
+}
+
+@keyframes notePulse {
+  0%, 100% { transform: translateY(0); opacity: 1; }
+  50% { transform: translateY(-2px); opacity: .9; }
+}
+
 .btn-celebration {
   background: linear-gradient(135deg, #ff6b9d, #ff8fab);
   color: white;

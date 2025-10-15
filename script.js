@@ -516,24 +516,3 @@ async function getLeaderboardFromGoogleSheets() {
     return localData;
 }
 
-// Alternative method using Google Forms (simpler setup)
-function sendToGoogleForms(gameResult) {
-    // Tạo Google Form để nhận dữ liệu
-    const formData = new FormData();
-    formData.append('entry.XXXXXXX', gameResult.name); // Thay XXXXXXX bằng ID field
-    formData.append('entry.YYYYYYY', gameResult.character);
-    formData.append('entry.ZZZZZZZ', gameResult.correct);
-    formData.append('entry.AAAAAAA', gameResult.time);
-    formData.append('entry.BBBBBBB', gameResult.score);
-    formData.append('entry.CCCCCCC', gameResult.date);
-    
-    fetch('YOUR_GOOGLE_FORM_URL', {
-        method: 'POST',
-        body: formData,
-        mode: 'no-cors'
-    }).then(() => {
-        console.log('Kết quả đã được gửi lên Google Forms');
-    }).catch(error => {
-        console.log('Không thể gửi lên Google Forms:', error);
-    });
-}

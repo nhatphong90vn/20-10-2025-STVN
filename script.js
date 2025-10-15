@@ -412,6 +412,7 @@ async function displayLeaderboard(tab = 'time') {
             sortedLeaderboard.forEach((entry, index) => {
                 const rank = index + 1;
                 const rankIcon = rank === 1 ? '🥇' : rank === 2 ? '🥈' : rank === 3 ? '🥉' : '🏅';
+                const cardHref = getCelebrationCardHref(entry.name);
                 
                 const leaderboardItem = document.createElement('div');
                 leaderboardItem.className = `leaderboard-item rank-${rank}`;
@@ -426,6 +427,9 @@ async function displayLeaderboard(tab = 'time') {
                         </div>
                     </div>
                     <div class="score">${entry.score}</div>
+                    <div class="card-col">
+                        ${cardHref ? `<a class="card-link" href="${cardHref}" title="Xem thiệp của ${entry.name}"><i class="fa-regular fa-hand-point-right hand-anim"></i><span>Thiệp</span></a>` : '<span class="card-link disabled" title="Chưa có thiệp">Thiệp</span>'}
+                    </div>
                 `;
                 
                 leaderboardList.appendChild(leaderboardItem);
@@ -436,6 +440,21 @@ async function displayLeaderboard(tab = 'time') {
         console.error('Lỗi trong displayLeaderboard:', error);
         leaderboardList.innerHTML = '<div style="text-align: center; padding: 40px; color: #f44336;">Lỗi khi tải dữ liệu: ' + error.message + '</div>';
     }
+}
+
+function getCelebrationCardHref(name) {
+    const map = {
+        'Kei': 'kei.html',
+        'Mia': 'mia.html',
+        'Jane': 'jane.html',
+        'Flora': 'flora.html',
+        'Emma': 'emma.html',
+        'Mary': 'mary.html',
+        'Jasmine': 'jasmine.html',
+        'Lena': 'lena.html',
+        'Annie': 'annie.html'
+    };
+    return map[name] || '';
 }
 
 // Google Sheets Integration Functions

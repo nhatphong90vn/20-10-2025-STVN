@@ -510,6 +510,48 @@ body {
     color: #ff6b9d;
 }
 
+/* Celebration card column */
+.card-col {
+    margin-left: 16px;
+    min-width: 92px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #ffe3ee, #fff5fa);
+    color: #ff3f83;
+    text-decoration: none;
+    font-weight: 600;
+    border: 1px solid rgba(255, 107, 157, 0.25);
+    box-shadow: 0 6px 16px rgba(255, 107, 157, 0.18);
+    transition: transform .25s ease, box-shadow .25s ease;
+}
+
+.card-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 24px rgba(255, 107, 157, 0.25);
+}
+
+.card-link.disabled {
+    pointer-events: none;
+    opacity: .55;
+}
+
+.hand-anim {
+    animation: pointPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes pointPulse {
+    0%, 100% { transform: translateX(0); opacity: 1; }
+    50% { transform: translateX(4px); opacity: .85; }
+}
+
 .leaderboard-item.rank-1 .score,
 .leaderboard-item.rank-2 .score,
 .leaderboard-item.rank-3 .score {

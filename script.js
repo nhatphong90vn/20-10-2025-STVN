@@ -1,12 +1,12 @@
 // Game Data
 const characters = [
   { name: "Kei", role: "Boss", avatar: "👩‍💼" },
-  { name: "Emma", role: "Lập trình viên", avatar: "👩‍💻" },
-  { name: "Mia", role: "Quản lý nhân sự", avatar: "👩‍🎨" },
+  { name: "Emma", role: "Developer", avatar: "👩‍💻" },
+  { name: "Mia", role: "Human Resource management", avatar: "👩‍🎨" },
   { name: "Jane", role: "Personal Assistant (PA)", avatar: "👩‍⚕️" },
   { name: "Annie", role: "Quality Assurance (QA)", avatar: "👩‍🚀" },
   { name: "Flora", role: "Quality Assurance (QA)", avatar: "👩‍🍳" },
-  { name: "Mary", role: "Kế toán", avatar: "👩‍🏫" },
+  { name: "Mary", role: "Accountant", avatar: "👩‍🏫" },
   { name: "Jasmine", role: "Business Analyst (BA)", avatar: "👩‍✈️" },
   { name: "Lena", role: "Marketing", avatar: "👩‍🎤" },
 ];
@@ -15,63 +15,58 @@ const characters = [
 const SHARED_QUESTIONS = [
   {
     question: "Loài vật nào ngủ nhiều nhất trong ngày?",
-    options: ["Mèo", "Koala", "Chó", "Gấu trúc"],
+    options: ["Mèo", "Koala", "Jane", "Gấu trúc"],
     correct: 1, // Koala (ngủ tới 22 giờ mỗi ngày)
   },
   {
-    question: "Nếu nước chiếm 70% cơ thể con người, thì 30% còn lại là gì?",
-    options: [
-      "Xương và thịt",
-      "Trà sữa và cảm xúc",
-      "Không khí",
-      "DNA và tâm hồn",
-    ],
-    correct: 0, // Cấu tạo cơ thể thật
+    question: "Có bao nhiêu thành viên nam làm việc tại văn phòng STVN?",
+    options: ["10", "11", "12", "13"],
+    correct: 1, // Có 11 xác
   },
   {
-    question: "Trái cây nào được mệnh danh là 'vua của các loại trái cây'?",
-    options: ["Sầu riêng", "Xoài", "Dưa hấu", "Nho"],
-    correct: 0, // Sầu riêng – vua trái cây Đông Nam Á
+    question: "Sinh nhật của STVN vào ngày nào?",
+    options: ["08/06", "09/06", "06/08", "06/09"],
+    correct: 3, // 06/09
   },
   {
-    question: "Loài động vật nào có thể đứng ngủ?",
-    options: ["Ngựa", "Chó", "Mèo", "Heo"],
-    correct: 0, // Ngựa (và bò) có thể ngủ khi đứng
+    question:
+      "Trong dàn nhân sự làm việc tại văn phòng STVN. Ai là thành viên Nam lớn tuổi nhất?",
+    options: ["Henry", "Tee", "Alan", "Wind"],
+    correct: 3, // Wind
   },
   {
-    question: "Cái gì càng chia sẻ càng có nhiều?",
-    options: ["Tiền bạc", "Tình yêu", "Kiến thức", "Bí mật"],
-    correct: 2, // Kiến thức – càng chia sẻ càng lan tỏa
+    question: "Trong các thành viên sau ai là người nói nhiều nhất?",
+    options: ["Savilla", "John", "Danny", "Minn"],
+    correct: 0, // Savilla
   },
   {
-    question: "Loài chim nào không biết bay nhưng biết bơi rất giỏi?",
-    options: ["Chim cánh cụt", "Đà điểu", "Gà tây", "Công"],
-    correct: 0, // Chim cánh cụt
+    question:
+      "Có bao nhiêu thành viên STVN cơ sở Vinh đã có vợ/chồng (không tính chị Lisa đang nghỉ)?",
+    options: ["5", "6", "7", "8"],
+    correct: 2, // Kei - Mia - Emma - Annie - Peter - Savilla  - Henry
   },
   {
-    question: "Con gì đi bằng 4 chân sáng, 2 chân trưa, 3 chân chiều?",
-    options: ["Người", "Chó", "Mèo", "Khỉ"],
-    correct: 0, // Câu đố cổ: con người – lúc nhỏ bò, trưởng thành đi, già dùng gậy
+    question: "Thành viên có số lượt đi muộn nhiều nhất trong tháng 9 là?",
+    options: ["Flora", "Jane", "Neo", "John"],
+    correct: 1, // jane - 8 (Flora: 5, Neo: 7, John: 3)
   },
   {
-    question: "Cái gì càng lau càng bẩn?",
-    options: ["Khăn", "Gương", "Tay", "Mặt bàn"],
-    correct: 0, // Khăn – càng lau càng bẩn
+    question:
+      "Bạn chạy đua, vừa vượt người đứng thứ hai. Vậy bạn đang ở vị trí thứ mấy?",
+    options: ["Thứ nhất", "Thứ hai", "Thứ ba", "Không xác định"],
+    correct: 1, // Thứ hai — vì bạn vừa vượt người thứ hai nên bạn thay vị trí của họ
   },
   {
-    question: "Nếu bạn thả một vật xuống nước, nó sẽ nổi khi nào?",
-    options: [
-      "Khi nhẹ hơn nước",
-      "Khi có lỗ thoát khí",
-      "Khi được phù hộ",
-      "Khi làm bằng cao su",
-    ],
-    correct: 0, // Vật nổi khi khối lượng riêng nhỏ hơn nước
+    question:
+      "Trên cây có 8 chú chim, John đến bắn chết một con thì trên cây còn mấy con?",
+    options: ["7", "8", "1", "0"],
+    correct: 3, // (Đáp án: 0 - Toàn bộ đã bay khỏi cây vì sợ)
   },
   {
-    question: "Loài vật nào vừa thông minh, vừa biết cười?",
-    options: ["Khỉ", "Cá heo", "Chó", "Vẹt"],
-    correct: 1, // Cá heo – thông minh, có biểu cảm giống cười
+    question:
+      "Có bao nhiêu chữ C trong câu sau đây: “ Cơm, canh, cháo gì tớ cũng thích ăn!”",
+    options: ["9", "4", "1", "0"],
+    correct: 2, // 1 chữ C viết hoa
   },
 ];
 

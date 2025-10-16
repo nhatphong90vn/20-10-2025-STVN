@@ -2,7 +2,7 @@
 const characters = [
   { name: "Kei", role: "Boss", avatar: "👩‍💼" },
   { name: "Emma", role: "Developer", avatar: "👩‍💻" },
-  { name: "Mia", role: "Human Resource management", avatar: "👩‍🎨" },
+  { name: "Mia", role: "Human Resource Management", avatar: "👩‍🎨" },
   { name: "Jane", role: "Personal Assistant (PA)", avatar: "👩‍⚕️" },
   { name: "Annie", role: "Quality Assurance (QA)", avatar: "👩‍🚀" },
   { name: "Flora", role: "Quality Assurance (QA)", avatar: "👩‍🍳" },

@@ -397,6 +397,16 @@ function resetGame() {
   document.getElementById("timer").classList.remove("timer-warning");
 }
 
+function formatDate(dateStr) {
+  if (!dateStr) return "-";
+  const date = new Date(dateStr);
+  if (isNaN(date)) return dateStr; // Nếu dateStr không parse được (ví dụ "16/10/2025"), trả nguyên
+  const d = String(date.getDate()).padStart(2, "0");
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const y = date.getFullYear();
+  return `${d}/${m}/${y}`;
+}
+
 async function displayLeaderboard(tab = "time") {
   const leaderboardList = document.getElementById("leaderboard-list");
   leaderboardList.innerHTML =
@@ -447,23 +457,29 @@ async function displayLeaderboard(tab = "time") {
         leaderboardItem.className = `leaderboard-item rank-${rank}`;
 
         leaderboardItem.innerHTML = `
-                    <div class="rank">${rank}</div>
-                    <div class="rank-icon">${rankIcon}</div>
+                    <div class="rank-wrapper">
+                      <div class="rank">${rank}</div>
+                      <div class="rank-icon">${rankIcon}</div>
+                      <div class="player-name">${entry.name}</div>
+                    </div>              
                     <div class="player-info">
-                        <div class="player-name">${entry.name}</div>
                         <div class="player-stats">
-                            ${entry.correct}/10 câu đúng • ${entry.time}s • ${
-          entry.date
-        }
+                            ${entry.correct}/10 câu đúng • ${
+          entry.time
+        }s • ${formatDate(entry.date)}
                         </div>
                     </div>
-                    <div class="score">${entry.score}</div>
-                    <div class="card-col">
-                        ${
-                          cardHref
-                            ? `<a class="card-link" href="${cardHref}" title="Xem thiệp của ${entry.name}"><i class="fa-regular fa-hand-point-right hand-anim"></i><span>Thiệp</span></a>`
-                            : '<span class="card-link disabled" title="Chưa có thiệp">Thiệp</span>'
-                        }
+                    <div class="player-score">
+                                          <div class="score">${
+                                            entry.score
+                                          }</div>
+                      <div class="card-col">
+                          ${
+                            cardHref
+                              ? `<a class="card-link" href="${cardHref}" title="Xem thiệp của ${entry.name}"><i class="fa-regular fa-hand-point-right hand-anim"></i><span>Thiệp</span></a>`
+                              : '<span class="card-link disabled" title="Chưa có thiệp">Thiệp</span>'
+                          }
+                      </div>
                     </div>
                 `;
 
